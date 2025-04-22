@@ -2,10 +2,15 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:milas_app_movil/models/api_response.dart';
+import 'package:milas_app_movil/models/token.dart';
 import 'package:milas_app_movil/models/user.dart';
+import 'package:milas_app_movil/storage/local_storage.dart';
 
-class Repository {
-  Future<ApiResponse<User>?> postLogin(String username, String password) async {
+class AuthService {
+  Future<ApiResponse<Token>?> postLogin(
+    String username,
+    String password,
+  ) async {
     final response = await http.post(
       Uri.parse('https://milasapp.emaeroles.dev/api/auth/user'),
       headers: <String, String>{
@@ -15,6 +20,29 @@ class Repository {
         'username': username,
         'password': password,
       }),
+    );
+
+    if (response.statusCode == 200) {
+      var decodedJson = jsonDecode(response.body);
+      ApiResponse<Token> apiResponse = ApiResponse<Token>.fromJson(
+        decodedJson,
+        (data) => Token.fromJson(data),
+      );
+      return apiResponse;
+    } else {
+      return null;
+      //throw Exception('Failed to load post');
+    }
+  }
+
+  Future<ApiResponse<User>?> getCheck() async {
+    String? token = await LocalStorage.getToken();
+    final response = await http.get(
+      Uri.parse('https://milasapp.emaeroles.dev/api/auth/check'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token',
+      },
     );
 
     if (response.statusCode == 200) {
