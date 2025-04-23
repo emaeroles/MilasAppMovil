@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:milas_app_movil/screens/login_screen.dart';
-import 'package:milas_app_movil/storage/local_storage.dart';
+import 'package:milas_app_movil/main.dart';
+import 'package:milas_app_movil/services/home_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  HomeService homeService = HomeService(navigationService);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const Text("Home"),
             OutlinedButton(
               onPressed: () {
-                LocalStorage.clearToken();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                );
+                homeService.logout();
               },
               child: const Text("Logout"),
             ),

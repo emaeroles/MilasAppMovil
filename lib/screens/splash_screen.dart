@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:milas_app_movil/models/api_response.dart';
-import 'package:milas_app_movil/models/user.dart';
-import 'package:milas_app_movil/screens/home_screen.dart';
-import 'package:milas_app_movil/screens/login_screen.dart';
-import 'package:milas_app_movil/services/auth_service.dart';
-import 'package:milas_app_movil/storage/local_storage.dart';
+import 'package:milas_app_movil/main.dart';
+import 'package:milas_app_movil/services/splash_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,52 +10,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  SplashService splashService = SplashService(navigationService);
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      checkUserStatus();
+      splashService.checkUserStatus();
     });
-  }
-
-  void checkUserStatus() async {
-    final token = await LocalStorage.getToken();
-    if (!mounted) return;
-    //final token = "Ema";
-    if (token != null) {
-      final isValid = await validateToken();
-      if (!mounted) return;
-      //final isValid = false;
-      if (isValid) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-        );
-      } else {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => LoginScreen()),
-        );
-      }
-    } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-      );
-    }
-  }
-
-  Future<bool> validateToken() async {
-    AuthService authService = AuthService();
-    ApiResponse<User>? apiResponse = await authService.getCheck();
-    if (apiResponse != null) {
-      if (apiResponse.status == 200) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    return false;
   }
 
   @override

@@ -6,7 +6,7 @@ import 'package:milas_app_movil/models/token.dart';
 import 'package:milas_app_movil/models/user.dart';
 import 'package:milas_app_movil/storage/local_storage.dart';
 
-class AuthService {
+class AuthRepo {
   Future<ApiResponse<Token>?> postLogin(
     String username,
     String password,

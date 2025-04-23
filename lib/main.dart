@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:milas_app_movil/screens/splash_screen.dart';
+import 'package:milas_app_movil/core/navigation_service.dart';
+import 'package:milas_app_movil/core/rutes.dart';
+
+final NavigationService navigationService = NavigationService();
 
 void main() {
   runApp(const MainApp());
@@ -10,10 +13,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "MilasApp",
-      home: SplashScreen(),
+      navigatorKey: navigationService.navigatorKey,
+      onGenerateRoute: Routes.generateRoute,
+      initialRoute: Routes.splash,
     );
   }
 }
