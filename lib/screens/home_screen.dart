@@ -16,13 +16,51 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Home", style: Styles.textStyle),
+        backgroundColor: Color(0xFF1a1a1a),
+      ),
       backgroundColor: Color(0xFF242424),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Home", style: Styles.textStyle.copyWith(fontSize: 30)),
-            SizedBox(height: 100),
+            OutlinedButton(
+              style: Styles.buttonStyle,
+              onPressed: () {},
+              child: Text(
+                "Reparto",
+                style: Styles.textStyle.copyWith(fontSize: 18),
+              ),
+            ),
+            SizedBox(height: 50),
+            OutlinedButton(
+              style: Styles.buttonStyle,
+              onPressed: () {},
+              child: Text(
+                "Kioscos",
+                style: Styles.textStyle.copyWith(fontSize: 18),
+              ),
+            ),
+            SizedBox(height: 20),
+            OutlinedButton(
+              style: Styles.buttonStyle,
+              onPressed: () {},
+              child: Text(
+                "Productos",
+                style: Styles.textStyle.copyWith(fontSize: 18),
+              ),
+            ),
+            SizedBox(height: 20),
+            OutlinedButton(
+              style: Styles.buttonStyle,
+              onPressed: () {},
+              child: Text(
+                "Insumos",
+                style: Styles.textStyle.copyWith(fontSize: 18),
+              ),
+            ),
+            SizedBox(height: 50),
             OutlinedButton(
               style: Styles.buttonStyle,
               onPressed: () {

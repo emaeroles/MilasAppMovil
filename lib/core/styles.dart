@@ -14,9 +14,10 @@ class Styles {
 
   static ButtonStyle buttonStyle = ButtonStyle(
     backgroundColor: WidgetStateProperty.all(Color(0xFF1a1a1a)),
+    minimumSize: WidgetStateProperty.all(Size(200, 50)),
     padding: WidgetStateProperty.all(
       EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-    ), // Espacio interno
+    ),
     shape: WidgetStateProperty.all(
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     ),
