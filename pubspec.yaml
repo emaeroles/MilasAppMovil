@@ -20,6 +20,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Consolas
+      fonts:
+        - asset: assets/fonts/Consolas-Regular.ttf
+        - asset: assets/fonts/Consolas-Bold.ttf
+          weight: 700
 
 flutter_icons:
   android: true
