@@ -9,6 +9,7 @@ class HomeService {
 
   void logout() {
     LocalStorage.clearToken();
+    LocalStorage.clearUserId();
     _navigationService.replaceWith(Routes.login);
   }
 }

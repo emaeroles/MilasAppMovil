@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:milas_app_movil/core/navigation_service.dart';
 import 'package:milas_app_movil/core/rutes.dart';
 
 final NavigationService navigationService = NavigationService();
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
+    _,
+  ) {
+    runApp(const MainApp());
+  });
   runApp(const MainApp());
 }
 
