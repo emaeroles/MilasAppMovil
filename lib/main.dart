@@ -2,17 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:milas_app_movil/core/navigation_service.dart';
 import 'package:milas_app_movil/core/rutes.dart';
+import 'package:milas_app_movil/providers/kioscos_provider.dart';
+import 'package:milas_app_movil/repositories/kiosco_repo.dart';
+import 'package:provider/provider.dart';
 
 final NavigationService navigationService = NavigationService();
+final KioscoRepo _kioscoRepo = KioscoRepo();
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
     _,
   ) {
-    runApp(const MainApp());
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => KioscosProvider(_kioscoRepo)),
+        ],
+        child: const MainApp(),
+      ),
+    );
   });
-  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {

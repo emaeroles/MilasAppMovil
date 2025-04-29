@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:milas_app_movil/core/rutes.dart';
 import 'package:milas_app_movil/core/styles.dart';
 import 'package:milas_app_movil/main.dart';
 import 'package:milas_app_movil/services/home_service.dart';
@@ -36,7 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 50),
             OutlinedButton(
               style: Styles.buttonStyle,
-              onPressed: () {},
+              onPressed: () {
+                homeService.addKioscos(context);
+                navigationService.navigateTo(Routes.kioscos);
+              },
               child: Text(
                 "Kioscos",
                 style: Styles.textStyle.copyWith(fontSize: 18),

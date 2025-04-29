@@ -22,4 +22,15 @@ class Styles {
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     ),
   );
+
+  static ButtonStyle footerButtonStyle = ButtonStyle(
+    backgroundColor: WidgetStateProperty.all(Color(0xFF1a1a1a)),
+    minimumSize: WidgetStateProperty.all(Size(100, 50)),
+    padding: WidgetStateProperty.all(
+      EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+    ),
+    shape: WidgetStateProperty.all(
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    ),
+  );
 }

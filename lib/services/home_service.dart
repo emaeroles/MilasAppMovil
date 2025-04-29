@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:milas_app_movil/core/navigation_service.dart';
 import 'package:milas_app_movil/core/rutes.dart';
+import 'package:milas_app_movil/providers/kioscos_provider.dart';
 import 'package:milas_app_movil/storage/local_storage.dart';
+import 'package:provider/provider.dart';
 
 class HomeService {
   final NavigationService _navigationService;
@@ -11,5 +14,10 @@ class HomeService {
     LocalStorage.clearToken();
     LocalStorage.clearUserId();
     _navigationService.replaceWith(Routes.login);
+  }
+
+  void addKioscos(BuildContext context) {
+    final provider = Provider.of<KioscosProvider>(context, listen: false);
+    provider.addKioscos();
   }
 }
