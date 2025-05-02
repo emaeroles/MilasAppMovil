@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:milas_app_movil/core/navigation_service.dart';
-import 'package:milas_app_movil/core/rutes.dart';
+import 'package:milas_app_movil/core/routes.dart';
 import 'package:milas_app_movil/providers/kioscos_provider.dart';
 import 'package:milas_app_movil/storage/local_storage.dart';
 import 'package:provider/provider.dart';

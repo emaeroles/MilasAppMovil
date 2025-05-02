@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:milas_app_movil/core/rutes.dart';
+import 'package:milas_app_movil/core/routes.dart';
 import 'package:milas_app_movil/core/styles.dart';
 import 'package:milas_app_movil/main.dart';
 import 'package:milas_app_movil/services/home_service.dart';
