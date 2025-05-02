@@ -34,8 +34,8 @@ class KioscosProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Kiosco getKiosco({required int index}) {
-    return _kioscos.elementAt(index);
+  Kiosco getKiosco({required String id}) {
+    return _kioscos.firstWhere((k) => k.id == id);
   }
 
   void updateKiosco({required Kiosco kiosco}) async {
