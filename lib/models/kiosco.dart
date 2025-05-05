@@ -8,17 +8,19 @@ class Kiosco {
   final String notes;
   final double dubt;
   final String order;
+  final bool isActive;
 
   Kiosco({
-    required this.id,
-    required this.name,
-    required this.manager,
-    required this.phone,
-    required this.address,
-    required this.isEnableChanges,
-    required this.notes,
-    required this.dubt,
-    required this.order,
+    this.id = "",
+    this.name = "",
+    this.manager = "",
+    this.phone = "",
+    this.address = "",
+    this.isEnableChanges = false,
+    this.notes = "",
+    this.dubt = 0,
+    this.order = "",
+    this.isActive = false,
   });
 
   factory Kiosco.fromJson(Map<String, dynamic> json) {
@@ -32,6 +34,7 @@ class Kiosco {
       notes: json["notes"],
       dubt: json["dubt"],
       order: json["order"],
+      isActive: json["isActive"],
     );
   }
 }

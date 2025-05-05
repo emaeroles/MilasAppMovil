@@ -28,7 +28,8 @@ class AppTextField extends StatelessWidget {
       cursorColor: Color(0xFFe3e3e3),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: Styles.textStyle.copyWith(fontSize: 20),
+        labelStyle: Styles.textStyle.copyWith(fontSize: 16),
+        floatingLabelStyle: Styles.textStyle.copyWith(fontSize: 20),
         filled: true,
         fillColor: Color(0xFF3b3b3b),
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
