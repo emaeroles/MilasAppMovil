@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:milas_app_movil/core/app_states.dart';
+import 'package:milas_app_movil/core/routes.dart';
 import 'package:milas_app_movil/core/styles.dart';
 import 'package:milas_app_movil/main.dart';
-import 'package:milas_app_movil/services/login_service.dart';
+import 'package:milas_app_movil/providers/login_provider.dart';
 import 'package:milas_app_movil/widgets/text_field.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,12 +15,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  LoginService loginService = LoginService(navigationService);
-
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LoginProvider>(context);
+
     final TextEditingController usernameCtrl = TextEditingController();
     final TextEditingController passwordCtrl = TextEditingController();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!provider.loading && provider.state == AppStates.authorized) {
+        navigationService.replaceWith(Routes.home);
+      }
+    });
 
     return Scaffold(
       backgroundColor: Color(0xFF242424),
@@ -46,7 +55,10 @@ class _LoginScreenState extends State<LoginScreen> {
               OutlinedButton(
                 style: Styles.buttonStyle,
                 onPressed: () {
-                  loginService.login(usernameCtrl.text, passwordCtrl.text);
+                  provider.login(
+                    username: usernameCtrl.text.trim(),
+                    password: passwordCtrl.text.trim(),
+                  );
                 },
                 child: Text(
                   "Login",
