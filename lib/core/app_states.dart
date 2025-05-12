@@ -1,4 +1,6 @@
 enum AppStates {
+  empty,
+
   data,
 
   notFound,

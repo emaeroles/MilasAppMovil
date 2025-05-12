@@ -27,6 +27,14 @@ class AppTextField extends StatelessWidget {
       style: Styles.textStyle.copyWith(fontSize: 16),
       cursorColor: Color(0xFFe3e3e3),
       decoration: InputDecoration(
+        errorMaxLines: 3,
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red.shade300),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red.shade500),
+        ),
+        errorStyle: Styles.textStyle.copyWith(color: Colors.red.shade300),
         labelText: label,
         labelStyle: Styles.textStyle.copyWith(fontSize: 16),
         floatingLabelStyle: Styles.textStyle.copyWith(fontSize: 20),
@@ -37,7 +45,7 @@ class AppTextField extends StatelessWidget {
           borderSide: BorderSide(color: Color(0xFF858585)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFFFFFFFF), width: 1.0),
+          borderSide: BorderSide(color: Color(0xFFFFFFFF)),
         ),
       ),
     );

@@ -9,7 +9,7 @@ class LoginProvider with ChangeNotifier {
 
   LoginProvider(this._authApi);
 
-  AppStates _state = AppStates.unauthorized;
+  AppStates _state = AppStates.empty;
   bool _loading = false;
   String? _error;
 
@@ -28,8 +28,10 @@ class LoginProvider with ChangeNotifier {
     try {
       final authOutput = AuthOutput(username: username, password: password);
       final appResultLogin = await _authApi.postLogin(authOutput);
-      await LocalStorage.saveToken(appResultLogin.data!.token);
-      //await LocalStorage.saveUserId(appResultUser.data!.id);
+      if (appResultLogin.data != null) {
+        await LocalStorage.saveToken(appResultLogin.data!.token);
+        //await LocalStorage.saveUserId(appResultUser.data!.id);
+      }
       _state = appResultLogin.state;
 
       // TODO: provisorio hasta hacer correctamente estos 2 endpoints en el back
@@ -41,5 +43,9 @@ class LoginProvider with ChangeNotifier {
       _loading = false;
       notifyListeners();
     }
+  }
+
+  void clearState() {
+    _state = AppStates.empty;
   }
 }
