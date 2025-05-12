@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:milas_app_movil/core/app_states.dart';
+import 'package:milas_app_movil/dtos/01_common/api_response.dart';
 import 'package:milas_app_movil/dtos/01_common/app_result.dart';
 import 'package:milas_app_movil/dtos/01_common/auth_output.dart';
-import 'package:milas_app_movil/models/api_response.dart';
 import 'package:milas_app_movil/dtos/01_common/auth_input.dart';
 import 'package:milas_app_movil/dtos/user/get_user_input.dart';
 import 'package:milas_app_movil/repositories/api_client.dart';
@@ -21,7 +22,7 @@ class AuthApi {
       decodedJson,
       (data) => AuthInput.fromJson(data),
     );
-    print(apiResponse.message);
+    debugPrint(apiResponse.message);
 
     if (apiResponse.status == 200) {
       AppResult<AuthInput> appResult = AppResult(
@@ -47,7 +48,7 @@ class AuthApi {
       decodedJson,
       (data) => GetUserInput.fromJson(data),
     );
-    print(apiResponse.message);
+    debugPrint(apiResponse.message);
 
     if (response.statusCode == 200) {
       AppResult<GetUserInput> appResult = AppResult(
