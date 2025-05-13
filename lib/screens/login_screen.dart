@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.of(context, rootNavigator: true).pop();
         showInfoDialog(
           context: context,
-          title: 'Error de autenticación',
+          red: true,
           message: 'El usuario o la contraseña no son válidos.',
         );
       }

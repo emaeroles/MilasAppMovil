@@ -97,7 +97,7 @@ class AppTheme {
           side: const BorderSide(color: Color(0xFFbababa), width: 2),
         ),
         titleTextStyle: const TextStyle(
-          fontSize: 18,
+          fontSize: 16,
           fontWeight: FontWeight.bold,
           fontFamily: "Consolas",
           color: Color(0xFFe3e3e3),
@@ -113,8 +113,4 @@ class AppTheme {
       ),
     );
   }
-
-  //style: ElevatedButton.styleFrom(
-  //  backgroundColor: Theme.of(context).colorScheme.primary,
-  //),
 }
