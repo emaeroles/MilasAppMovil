@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:milas_app_movil/core/styles.dart';
 
 class AppTextField extends StatelessWidget {
   final String label;
@@ -24,37 +23,8 @@ class AppTextField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       obscureText: obscureText,
-      style: Styles.textStyle.copyWith(fontSize: 16),
-      cursorColor: Color(0xFFe3e3e3),
-      decoration: InputDecoration(
-        errorMaxLines: 3,
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red.shade300),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red.shade500),
-        ),
-        errorStyle: Styles.textStyle.copyWith(color: Colors.red.shade300),
-        labelText: label,
-        labelStyle: Styles.textStyle.copyWith(fontSize: 16),
-        floatingLabelStyle: Styles.textStyle.copyWith(fontSize: 20),
-        filled: true,
-        fillColor: Color(0xFF3b3b3b),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFF858585)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-        ),
-      ),
+      decoration: InputDecoration(labelText: label),
+      style: Theme.of(context).textTheme.bodyMedium,
     );
   }
 }
-
-// en StatefulWidget, es buan practica hacer esto
-//@override
-//void dispose() {
-//  nameController.dispose();
-//  super.dispose();
-//}

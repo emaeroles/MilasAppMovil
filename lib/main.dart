@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:milas_app_movil/core/app_theme.dart';
 import 'package:milas_app_movil/core/navigation_service.dart';
 import 'package:milas_app_movil/core/routes.dart';
 import 'package:milas_app_movil/providers/kioscos_provider.dart';
@@ -42,6 +43,7 @@ class MainApp extends StatelessWidget {
       navigatorKey: navigationService.navigatorKey,
       onGenerateRoute: Routes.generateRoute,
       initialRoute: Routes.splash,
+      theme: AppTheme.darkTheme,
     );
   }
 }

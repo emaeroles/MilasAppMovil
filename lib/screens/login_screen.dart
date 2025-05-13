@@ -60,7 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     return Scaffold(
-      backgroundColor: Color(0xFF242424),
       body: Center(
         child: SizedBox(
           width: 300,
@@ -71,10 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text(
                   "MilasApp",
-                  style: Styles.textStyle.copyWith(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 100),
                 AppTextField(
@@ -91,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 25),
                 OutlinedButton(
-                  style: Styles.buttonStyle,
+                  style: Styles.min200ButtonStyle,
                   onPressed: () {
                     if (_formState.currentState!.validate()) {
                       showLoadingDialog(context: context);
@@ -101,10 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     }
                   },
-                  child: Text(
-                    "Login",
-                    style: Styles.textStyle.copyWith(fontSize: 18),
-                  ),
+                  child: Text("Login"),
                 ),
               ],
             ),

@@ -17,63 +17,44 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Home", style: Styles.textStyle),
-        backgroundColor: Color(0xFF1a1a1a),
-      ),
-      backgroundColor: Color(0xFF242424),
+      appBar: AppBar(title: Text("Home")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OutlinedButton(
-              style: Styles.buttonStyle,
+              style: Styles.min200ButtonStyle,
               onPressed: () {},
-              child: Text(
-                "Reparto",
-                style: Styles.textStyle.copyWith(fontSize: 18),
-              ),
+              child: Text("Reparto"),
             ),
             SizedBox(height: 50),
             OutlinedButton(
-              style: Styles.buttonStyle,
+              style: Styles.min200ButtonStyle,
               onPressed: () {
                 homeService.addKioscos(context);
                 navigationService.navigateTo(Routes.kioscos);
               },
-              child: Text(
-                "Kioscos",
-                style: Styles.textStyle.copyWith(fontSize: 18),
-              ),
+              child: Text("Kioscos"),
             ),
             SizedBox(height: 20),
             OutlinedButton(
-              style: Styles.buttonStyle,
+              style: Styles.min200ButtonStyle,
               onPressed: () {},
-              child: Text(
-                "Productos",
-                style: Styles.textStyle.copyWith(fontSize: 18),
-              ),
+              child: Text("Productos"),
             ),
             SizedBox(height: 20),
             OutlinedButton(
-              style: Styles.buttonStyle,
+              style: Styles.min200ButtonStyle,
               onPressed: () {},
-              child: Text(
-                "Insumos",
-                style: Styles.textStyle.copyWith(fontSize: 18),
-              ),
+              child: Text("Insumos"),
             ),
             SizedBox(height: 50),
             OutlinedButton(
-              style: Styles.buttonStyle,
+              style: Styles.min200ButtonStyle,
               onPressed: () {
                 homeService.logout();
               },
-              child: Text(
-                "Logout",
-                style: Styles.textStyle.copyWith(fontSize: 18),
-              ),
+              child: Text("Logout"),
             ),
           ],
         ),

@@ -8,12 +8,12 @@ void showLoadingDialog({required BuildContext context}) {
     builder: (BuildContext context) {
       return const Dialog(
         backgroundColor: Colors.transparent,
-        elevation: 0,
-        child: Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFe3e3e3)),
-          ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+          side: BorderSide.none,
         ),
+        elevation: 0,
+        child: Center(child: CircularProgressIndicator()),
       );
     },
   );

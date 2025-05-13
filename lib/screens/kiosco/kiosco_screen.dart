@@ -52,12 +52,7 @@ class _KioscoScreenState extends State<KioscoScreen> {
     final provider = Provider.of<KioscosProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Kiosco", style: Styles.textStyle),
-        backgroundColor: Color(0xFF1a1a1a),
-        foregroundColor: Color(0xFFe3e3e3),
-      ),
-      backgroundColor: Color(0xFF242424),
+      appBar: AppBar(title: Text("Kiosco")),
       body: Column(
         children: [
           Expanded(
@@ -65,13 +60,7 @@ class _KioscoScreenState extends State<KioscoScreen> {
               width: double.infinity,
               child:
                   provider.loading
-                      ? Center(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Color(0xFFe3e3e3),
-                          ),
-                        ),
-                      )
+                      ? Center(child: CircularProgressIndicator())
                       : Center(
                         child: SizedBox(
                           width: 300,
@@ -109,7 +98,10 @@ class _KioscoScreenState extends State<KioscoScreen> {
             width: double.infinity,
             decoration: BoxDecoration(
               border: Border(
-                top: BorderSide(color: Color(0xFFFFFFFF), width: 1),
+                top: BorderSide(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  width: 1,
+                ),
               ),
             ),
             child: Row(
@@ -117,7 +109,7 @@ class _KioscoScreenState extends State<KioscoScreen> {
               children: [
                 if (provider.selectedKiosco != "")
                   OutlinedButton(
-                    style: Styles.footerButtonStyle,
+                    style: Styles.min100ButtonStyle,
                     onPressed: () {
                       kioscoService.toggleActive(
                         context,
@@ -125,13 +117,10 @@ class _KioscoScreenState extends State<KioscoScreen> {
                       );
                       provider.deleteSelectedKiosco();
                     },
-                    child: Text(
-                      isActive ? "Desactivar" : "Activar",
-                      style: Styles.textStyle.copyWith(fontSize: 18),
-                    ),
+                    child: Text(isActive ? "Desactivar" : "Activar"),
                   ),
                 OutlinedButton(
-                  style: Styles.footerButtonStyle,
+                  style: Styles.min100ButtonStyle,
                   onPressed: () {
                     Kiosco kiosco = Kiosco(
                       id: provider.selectedKiosco,
@@ -142,10 +131,7 @@ class _KioscoScreenState extends State<KioscoScreen> {
                     );
                     kioscoService.guardar(context, kiosco);
                   },
-                  child: Text(
-                    "Guardar",
-                    style: Styles.textStyle.copyWith(fontSize: 18),
-                  ),
+                  child: Text("Guardar"),
                 ),
               ],
             ),

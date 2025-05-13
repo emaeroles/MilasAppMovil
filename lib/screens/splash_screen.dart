@@ -38,13 +38,6 @@ class _SplashScreenState extends State<SplashScreen> {
       }
     });
 
-    return Scaffold(
-      backgroundColor: Color(0xFF242424),
-      body: const Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFe3e3e3)),
-        ),
-      ),
-    );
+    return Scaffold(body: const Center(child: CircularProgressIndicator()));
   }
 }

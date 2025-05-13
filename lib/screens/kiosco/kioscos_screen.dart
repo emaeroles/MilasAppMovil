@@ -15,14 +15,8 @@ class KioscosScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          provider.isActives ? "Kioscos" : "Kioscos Inactivos",
-          style: Styles.textStyle,
-        ),
-        backgroundColor: Color(0xFF1a1a1a),
-        foregroundColor: Color(0xFFe3e3e3),
+        title: Text(provider.isActives ? "Kioscos" : "Kioscos Inactivos"),
       ),
-      backgroundColor: Color(0xFF242424),
       body: Column(
         children: [
           Expanded(
@@ -30,13 +24,7 @@ class KioscosScreen extends StatelessWidget {
               width: double.infinity,
               child:
                   provider.loading
-                      ? Center(
-                        child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                            Color(0xFFe3e3e3),
-                          ),
-                        ),
-                      )
+                      ? Center(child: CircularProgressIndicator())
                       : ListView(
                         padding: EdgeInsets.only(top: 8),
                         children:
@@ -46,14 +34,11 @@ class KioscosScreen extends StatelessWidget {
                                   width: 300,
                                   padding: EdgeInsets.only(top: 8, bottom: 8),
                                   child: OutlinedButton(
-                                    style: Styles.buttonStyle,
+                                    style: Styles.min300ButtonStyle,
                                     onPressed: () {
                                       kioscosService.goTo(context, kiosco.id);
                                     },
-                                    child: Text(
-                                      kiosco.name,
-                                      style: Styles.textStyle,
-                                    ),
+                                    child: Text(kiosco.name),
                                   ),
                                 ),
                               );
@@ -66,14 +51,17 @@ class KioscosScreen extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               border: Border(
-                top: BorderSide(color: Color(0xFFFFFFFF), width: 1),
+                top: BorderSide(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  width: 1,
+                ),
               ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
-                  style: Styles.footerButtonStyle,
+                  style: Styles.min100ButtonStyle,
                   onPressed: () {
                     if (provider.isActives) {
                       provider.addInactivesKioscos();
@@ -81,21 +69,15 @@ class KioscosScreen extends StatelessWidget {
                       provider.addKioscos();
                     }
                   },
-                  child: Text(
-                    provider.isActives ? "Inactivos" : "Activos",
-                    style: Styles.textStyle.copyWith(fontSize: 18),
-                  ),
+                  child: Text(provider.isActives ? "Inactivos" : "Activos"),
                 ),
                 OutlinedButton(
-                  style: Styles.footerButtonStyle,
+                  style: Styles.min100ButtonStyle,
                   onPressed: () {
                     provider.deleteSelectedKiosco();
                     kioscosService.goTo(context, "");
                   },
-                  child: Text(
-                    "Nuevo",
-                    style: Styles.textStyle.copyWith(fontSize: 18),
-                  ),
+                  child: Text("Nuevo"),
                 ),
               ],
             ),
